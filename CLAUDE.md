@@ -20,11 +20,11 @@ There is no test runner configured.
 
 ## Architecture
 
-Single-page React 19 + Vite app. Entire application logic lives in `src/App.jsx` as one component:
+Single-page React 19 + Vite app.
 
-- All state (transactions list, form fields, filters) is local `useState` in `App`.
-- Initial transactions are hard-coded; there is no persistence layer or backend.
-- Totals (`totalIncome`, `totalExpenses`, `balance`) and `filteredTransactions` are derived inline on each render.
-- `amount` is stored as a **string** (from the `<input type="number">`), so the `reduce` sums concatenate rather than add — this is the known starter bug.
+- `src/App.jsx` owns the transactions list and filter state, derives totals and filtered rows, and composes the page.
+- Presentational components live in `src/components/`: `Summary`, `TransactionForm` (owns its own form-field state), `TransactionFilters`, `TransactionTable`.
+- Initial transactions are hard-coded constants in `App.jsx`; there is no persistence layer or backend.
+- `amount` is stored as a string (from `<input type="number">`); reducers in `App.jsx` must coerce with `Number()` before summing.
 
 Styling is plain CSS in `src/App.css` and `src/index.css`. No router, state library, or component library.
