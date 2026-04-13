@@ -146,3 +146,18 @@ th {
   font-size: 12px;
   color: #333;
 }
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  color: red;
+}
